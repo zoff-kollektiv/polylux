@@ -2,7 +2,7 @@ import Helmet from 'react-helmet';
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import style from './style';
+import Article from '../components/article';
 import withLayout from '../components/with-layout';
 
 const Frontpage = ({
@@ -13,15 +13,10 @@ const Frontpage = ({
     content: { html }
   }
 }) => (
-  <article>
-    <style jsx>{style}</style>
-
+  <>
     <Helmet title={title} />
-
-    <div className="constraint">
-      <div className="text" dangerouslySetInnerHTML={{ __html: html }} />
-    </div>
-  </article>
+    <Article text={html} />
+  </>
 );
 
 export default withLayout(Frontpage);
