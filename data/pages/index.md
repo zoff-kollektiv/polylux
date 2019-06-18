@@ -25,7 +25,7 @@ Tolerantes Sachsen, dem Miteinander e.V., der Opferperspektive Brandenburg,
 dem Flüchtlingsrat Thüringen, dem Bündnis »Wann, wenn nicht jetzt«.
 
 Wir sind in der Gründung und beim Aufbau von Netzwerk und Plattform. Wir suchen
-Menschen, die mitmachen wollen, Menschen, die mit uns diskutieren wollen,
-gemeinsam nachdenken, gemeinsam Strategien entwickeln:
+Menschen, die mitmachen, Menschen, die mit uns diskutieren,
+gemeinsam nachdenken, gemeinsam Strategien entwickeln wollen:
 
 [kontakt@polylux.network](mailto:kontakt@polylux.network)
