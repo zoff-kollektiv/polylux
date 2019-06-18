@@ -6,7 +6,7 @@ gesellschaftliches Klima der Angst und der Ausgrenzung.
 Polylux setzt dem ein solidarisches Netzwerk entgegen und baut eine Plattform
 zur ideellen und finanziellen Unterstützung bedrohter lokaler Initiativen auf.
 Wir schaffen Aufmerksamkeit für deren Probleme und zeigen: Gemeinsam  können
-wir den Rechtsruck stoppen ...
+wir den Rechtsruck stoppen.
 
 Polylux bietet lokalen Initiativen Support in verschiedenen Formen –
 ökonomisch (über Spenden), durch Räume vor Ort, durch Menschen, die
