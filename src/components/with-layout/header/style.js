@@ -20,11 +20,3 @@ export const logoStyle = css.resolve`
     z-index: 5;
   }
 `;
-
-export const triangleStyle = css.resolve`
-  svg {
-    height: 6rem;
-    position: absolute;
-    width: auto;
-  }
-`;
