@@ -22,7 +22,9 @@ export default Component => props => {
         {headerMenu && <Menu items={headerMenu.menuItems.nodes} />}
       </Header>
 
-      <Component {...props} />
+      <main>
+        <Component {...props} />
+      </main>
 
       <Footer />
     </>

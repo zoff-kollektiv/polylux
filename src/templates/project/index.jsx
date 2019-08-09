@@ -2,7 +2,12 @@ import Helmet from 'react-helmet';
 import React from 'react';
 import { graphql } from 'gatsby';
 
+import Constraint from '../../components/constraint';
 import Facts from '../../components/facts';
+import Heading from '../../components/blocks/heading';
+import Location from './location';
+import Paragraph from '../../components/blocks/paragraph';
+import Title from '../../components/title';
 import withLayout from '../../components/with-layout';
 
 export const query = graphql`
@@ -67,37 +72,35 @@ const Project = ({
   <>
     <Helmet title={title} />
 
-    <h1>{title}</h1>
+    <Constraint>
+      <Title>{title}</Title>
 
-    {donations.donationUrl && <a href={donations.donationUrl}>Unterstützen</a>}
+      {donations.donationUrl && (
+        <a href={donations.donationUrl}>Unterstützen</a>
+      )}
 
-    {metadata.city ||
-      (metadata.federalState && (
-        <em>
-          {metadata.city}
-          {metadata.city && metadata.federalState && ', '}
-          {metadata.federalState}
-        </em>
-      ))}
+      {(metadata.city || metadata.federalState) && (
+        <Location city={metadata.city} state={metadata.federalState} />
+      )}
+    </Constraint>
 
-    {blocks.map(({ __typename: type, ...block }) => {
-      switch (type) {
-        case 'wp_CoreParagraphBlock':
-          return <p>{block.attributes.content}</p>;
+    <Constraint>
+      {blocks.map(({ __typename: type, ...block }) => {
+        switch (type) {
+          case 'wp_CoreParagraphBlock':
+            return <Paragraph content={block.attributes.content} />;
 
-        case 'wp_CoreHeadingBlock':
-          // eslint-disable-next-line no-case-declarations
-          const Heading = `h${block.attributes.level}`;
+          case 'wp_CoreHeadingBlock':
+            return <Heading>{block.attributes.content}</Heading>;
 
-          return <Heading>{block.attributes.content}</Heading>;
+          case 'wp_AcfFactsBlock':
+            return <Facts {...block.acf} />;
 
-        case 'wp_AcfFactsBlock':
-          return <Facts {...block.acf} />;
-
-        default:
-          return <pre>{JSON.stringify(block)}</pre>;
-      }
-    })}
+          default:
+            return <pre>{JSON.stringify(block)}</pre>;
+        }
+      })}
+    </Constraint>
   </>
 );
 
