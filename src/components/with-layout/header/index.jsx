@@ -4,7 +4,7 @@ import React from 'react';
 import Logo from '../../../../static/icons/logo.svg';
 import style, { logoStyle } from './style';
 
-export default () => (
+export default ({ children }) => (
   <header>
     <style jsx>{style}</style>
     {logoStyle.styles}
@@ -12,5 +12,7 @@ export default () => (
     <Link to="/">
       <Logo className={logoStyle.className} />
     </Link>
+
+    {children}
   </header>
 );

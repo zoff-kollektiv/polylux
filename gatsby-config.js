@@ -24,14 +24,6 @@ module.exports = {
     },
 
     {
-      resolve: `gatsby-plugin-remote-images`,
-      options: {
-        nodeType: 'wpMediaItem',
-        imagePath: 'sourceUrl'
-      }
-    },
-
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'pages',
@@ -39,6 +31,8 @@ module.exports = {
       }
     },
 
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     'gatsby-transformer-remark',
     'gatsby-plugin-styled-jsx',
     'gatsby-plugin-react-helmet'

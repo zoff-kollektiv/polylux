@@ -4,7 +4,7 @@ const fetchPages = graphql =>
   graphql(`
     {
       wp {
-        projects {
+        pages {
           nodes {
             id
             slug
@@ -18,19 +18,19 @@ const fetchPages = graphql =>
 const createGatsbyPages = (data, createPage, menus) => {
   const {
     wp: {
-      projects: { nodes: projects }
+      pages: { nodes: pages }
     }
   } = data;
 
-  projects.forEach(({ slug, id }) => {
-    const pagePath = `/projects/${slug}/`;
+  pages.forEach(({ slug, id }) => {
+    const pagePath = `/${slug}/`;
 
     // eslint-disable-next-line no-console
-    console.log('Create project:', pagePath);
+    console.log('Create page:', pagePath);
 
     createPage({
       path: pagePath,
-      component: path.resolve('src/templates/project/index.jsx'),
+      component: path.resolve('src/templates/page/index.jsx'),
       context: {
         id,
         menus
@@ -39,11 +39,11 @@ const createGatsbyPages = (data, createPage, menus) => {
   });
 };
 
-const createProjects = (graphql, createPage, menus) =>
+const createPages = (graphql, createPage, menus) =>
   fetchPages(graphql).then(({ data }) =>
     createGatsbyPages(data, createPage, menus)
   );
 
 module.exports = {
-  createProjects
+  createPages
 };

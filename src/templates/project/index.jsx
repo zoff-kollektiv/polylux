@@ -69,7 +69,7 @@ const Project = ({
 
     <h1>{title}</h1>
 
-    <a href={donations.donationUrl || '#'}>Unterstützen</a>
+    {donations.donationUrl && <a href={donations.donationUrl}>Unterstützen</a>}
 
     {metadata.city ||
       (metadata.federalState && (

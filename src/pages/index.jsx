@@ -1,21 +1,26 @@
-import Helmet from 'react-helmet';
+import Link from 'gatsby-link';
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import Article from '../components/article';
 import withLayout from '../components/with-layout';
 
 const Frontpage = ({
   data: {
-    site: {
-      siteMetadata: { title }
-    },
-    content: { html }
+    wp: {
+      projects: { nodes: projects }
+    }
   }
 }) => (
   <>
-    <Helmet title={title} />
-    <Article text={html} />
+    {projects.map(({ slug, title, featuredImage }) => (
+      <Link to={`/projects/${slug}/`}>
+        <h2>{title}</h2>
+
+        {featuredImage && featuredImage.localFile && (
+          <img {...featuredImage.localFile.fixed} alt="" />
+        )}
+      </Link>
+    ))}
   </>
 );
 
@@ -23,13 +28,23 @@ export default withLayout(Frontpage);
 
 export const query = graphql`
   {
-    content: markdownRemark(fileAbsolutePath: { regex: "/pages/index.md$/" }) {
-      html
-    }
+    wp {
+      projects {
+        nodes {
+          slug
+          title
 
-    site {
-      siteMetadata {
-        title
+          featuredImage {
+            localFile {
+              childImageSharp {
+                fixed(width: 500) {
+                  src
+                  srcSet
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
