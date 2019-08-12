@@ -52,9 +52,7 @@ export default Component => props => {
         <Component {...props} />
       </main>
 
-      <Footer>
-        {footerMenu && <Menu items={footerMenu.menuItems.nodes} />}
-      </Footer>
+      <Footer menu={footerMenu.menuItems.nodes} />
     </>
   );
 };

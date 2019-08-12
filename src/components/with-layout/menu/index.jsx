@@ -34,7 +34,7 @@ const Menu = ({ open = false, items = [], onToggle = () => {} }) => (
         <style jsx>{listStyle}</style>
 
         {items.map(({ url, label }) => (
-          <Item to={relativeLink(url)} key={`menu-${url}`}>
+          <Item to={relativeLink(url)} key={`header-menu-${url}`}>
             {label}
           </Item>
         ))}
