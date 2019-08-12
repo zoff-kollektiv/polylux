@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: 'Polylux'
+    title: 'POLYLUX',
+    email: 'kontakt@polylux.network',
+    instagramAccount: 'https://www.instagram.com/polylux_network/',
+    twitterAccount: 'https://twitter.com/polylux_network'
   },
 
   plugins: [
@@ -26,8 +29,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'pages',
-        path: `${__dirname}/data/pages/`
+        name: 'all',
+        path: `${__dirname}/gatsby-creators/`
       }
     },
 

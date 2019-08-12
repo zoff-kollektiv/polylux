@@ -2,7 +2,7 @@ import css from 'styled-jsx/css';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
-import { colors } from '../../../tokens';
+import { colors, fonts } from '../../../tokens';
 
 export default css`
   footer {
@@ -11,9 +11,32 @@ export default css`
     color: white;
     display: flex;
     flex-direction: column;
-    margin-top: 5rem;
     padding-bottom: 5rem;
     padding-top: 5rem;
+  }
+
+  .inner {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .email {
+    font-family: ${fonts.bitter.family};
+    font-size: 1.4rem;
+    font-weight: 400;
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .social-media-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2.5rem;
+  }
+
+  .social-media-container > * + * {
+    margin-left: 1rem;
   }
 `;
 
