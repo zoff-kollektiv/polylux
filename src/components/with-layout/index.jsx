@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
 import Footer from './footer';
@@ -7,12 +8,29 @@ import style from './style';
 
 export default Component => props => {
   const {
-    pageContext: { menus }
-  } = props;
+    wp: {
+      menus: { nodes: menus }
+    }
+  } = useStaticQuery(graphql`
+    {
+      wp {
+        menus {
+          nodes {
+            menuItems {
+              nodes {
+                label
+                url
+              }
+            }
+            name
+          }
+        }
+      }
+    }
+  `);
 
-  // eslint-disable-next-line no-unused-vars
-  const footerMenu = menus && menus.find(({ name }) => name === 'Footer');
   const headerMenu = menus && menus.find(({ name }) => name === 'Header');
+  const footerMenu = menus && menus.find(({ name }) => name === 'Footer');
 
   return (
     <>
@@ -26,7 +44,9 @@ export default Component => props => {
         <Component {...props} />
       </main>
 
-      <Footer />
+      <Footer>
+        {footerMenu && <Menu items={footerMenu.menuItems.nodes} />}
+      </Footer>
     </>
   );
 };

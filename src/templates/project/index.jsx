@@ -1,4 +1,4 @@
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import React from 'react';
 import { graphql } from 'gatsby';
 
@@ -31,26 +31,15 @@ export const query = graphql`
           __typename
 
           ... on wp_CoreParagraphBlock {
-            attributes {
-              ... on wp_CoreParagraphBlockAttributesV3 {
-                content
-              }
-            }
+            ...wpBlockParagraph
           }
 
           ... on wp_CoreHeadingBlock {
-            attributes {
-              level
-              content
-            }
+            ...wpBlockHeading
           }
 
           ... on wp_AcfFactsBlock {
-            acf {
-              facts {
-                fact
-              }
-            }
+            ...wpBlockFacts
           }
         }
       }

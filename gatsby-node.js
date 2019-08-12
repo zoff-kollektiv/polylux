@@ -6,29 +6,10 @@ const { createProjects } = require('./gatsby-creators/project');
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  return graphql(`
-    {
-      wp {
-        menus {
-          nodes {
-            name
-
-            menuItems {
-              nodes {
-                label
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  `).then(({ data: { wp: { menus: { nodes: menus } } } }) =>
-    Promise.all([
-      createPages(graphql, createPage, menus),
-      createProjects(graphql, createPage, menus)
-    ])
-  );
+  return Promise.all([
+    createPages(graphql, createPage, []),
+    createProjects(graphql, createPage, [])
+  ]);
 };
 
 // https://dev.to/nevernull/gatsby-with-wpgraphql-acf-and-gatbsy-image-72m

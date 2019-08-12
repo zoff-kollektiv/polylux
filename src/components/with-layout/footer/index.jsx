@@ -3,11 +3,11 @@ import React from 'react';
 import Constraint from '../../constraint';
 import style from './style';
 
-const Footer = () => (
+const Footer = ({ children }) => (
   <footer>
     <style jsx>{style}</style>
 
-    <Constraint>POLYLUX</Constraint>
+    <Constraint>{children}</Constraint>
   </footer>
 );
 
