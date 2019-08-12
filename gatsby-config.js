@@ -34,6 +34,29 @@ module.exports = {
       }
     },
 
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'POLYLUX',
+        short_name: 'POLYLUX',
+        start_url: '/',
+        background_color: '#FF0000',
+        theme_color: 'white',
+        display: 'standalone',
+        legacy: false
+      }
+    },
+
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        allPageHeaders: [
+          'Link: </fonts/LuloCleanOne/LuloCleanOne-Bold.woff2>; as=font; rel=preload; crossorigin=anonymous',
+          'Link: </fonts/Bitter/Bitter.woff2>; as=font; rel=preload; crossorigin=anonymous'
+        ]
+      }
+    },
+
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-styled-jsx',
