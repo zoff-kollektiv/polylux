@@ -2,7 +2,8 @@ export const colors = {
   black: '#030303',
   grey: {
     light: '#F2F2F2',
-    dark: '#6C6B6B'
+    medium: '#6C6B6B',
+    dark: '#525252'
   },
   red: '#FF0000'
 };

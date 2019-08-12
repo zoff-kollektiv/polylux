@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
 
 import Footer from './footer';
 import Header from './header';
@@ -29,6 +29,8 @@ export default Component => props => {
     }
   `);
 
+  const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
+
   const headerMenu = menus && menus.find(({ name }) => name === 'Header');
   const footerMenu = menus && menus.find(({ name }) => name === 'Footer');
 
@@ -36,8 +38,14 @@ export default Component => props => {
     <>
       <style jsx>{style}</style>
 
-      <Header>
-        {headerMenu && <Menu items={headerMenu.menuItems.nodes} />}
+      <Header menuOpen={headerMenuOpen}>
+        {headerMenu && (
+          <Menu
+            items={headerMenu.menuItems.nodes}
+            open={headerMenuOpen}
+            onToggle={() => setHeaderMenuOpen(!headerMenuOpen)}
+          />
+        )}
       </Header>
 
       <main>

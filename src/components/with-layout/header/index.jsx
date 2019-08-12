@@ -1,18 +1,25 @@
+import classnames from 'classnames';
 import Link from 'gatsby-link';
 import React from 'react';
 
+import Constraint from '../../constraint';
 import Logo from '../../../../static/icons/logo.svg';
-import style, { logoStyle } from './style';
+import style, { logo as logoStyle, logoLink as logoLinkStyle } from './style';
 
-export default ({ children }) => (
-  <header>
+export default ({ menuOpen = false, children }) => (
+  <header className={classnames({ 'is-open': menuOpen })}>
     <style jsx>{style}</style>
     {logoStyle.styles}
+    {logoLinkStyle.styles}
 
-    <Link to="/">
-      <Logo className={logoStyle.className} />
-    </Link>
+    <Constraint>
+      <div className="inner">
+        {children}
 
-    {children}
+        <Link to="/" className={logoLinkStyle.className}>
+          <Logo className={logoStyle.className} />
+        </Link>
+      </div>
+    </Constraint>
   </header>
 );

@@ -18,6 +18,7 @@
   "license": "MIT",
   "homepage": "https://polylux.network/",
   "dependencies": {
+    "classnames": "^2.2.6",
     "gatsby": "^2.13.54",
     "gatsby-link": "^2.2.4",
     "gatsby-plugin-react-helmet": "^3.1.3",
