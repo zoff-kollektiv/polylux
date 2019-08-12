@@ -2,7 +2,6 @@ import classnames from 'classnames';
 import Link from 'gatsby-link';
 import React from 'react';
 
-import Constraint from '../../constraint';
 import Logo from '../../../../static/icons/logo.svg';
 import style, { logo as logoStyle, logoLink as logoLinkStyle } from './style';
 
@@ -12,14 +11,10 @@ export default ({ menuOpen = false, children }) => (
     {logoStyle.styles}
     {logoLinkStyle.styles}
 
-    <Constraint>
-      <div className="inner">
-        {children}
+    {children}
 
-        <Link to="/" className={logoLinkStyle.className}>
-          <Logo className={logoStyle.className} />
-        </Link>
-      </div>
-    </Constraint>
+    <Link to="/" className={logoLinkStyle.className}>
+      <Logo className={logoStyle.className} />
+    </Link>
   </header>
 );

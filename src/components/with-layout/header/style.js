@@ -9,21 +9,15 @@ export default css`
     align-items: center;
     background-color: white;
     display: flex;
-    flex-direction: column;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    padding-top: 1.5rem;
+    flex-direction: row;
+    padding: 1.5rem;
     position: relative;
+    z-index: 10;
   }
 
   header.is-open {
     background-color: ${colors.grey.dark};
     color: white;
-  }
-
-  .inner {
-    display: flex;
-    flex-direction: row;
   }
 `;
 

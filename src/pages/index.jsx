@@ -1,7 +1,7 @@
-import Link from 'gatsby-link';
 import React from 'react';
 import { graphql } from 'gatsby';
 
+import ProjectList from '../components/project-list';
 import withLayout from '../components/with-layout';
 
 const Frontpage = ({
@@ -10,19 +10,7 @@ const Frontpage = ({
       projects: { nodes: projects }
     }
   }
-}) => (
-  <>
-    {projects.map(({ slug, title, featuredImage }) => (
-      <Link to={`/projects/${slug}/`}>
-        <h2>{title}</h2>
-
-        {featuredImage && featuredImage.localFile && (
-          <img {...featuredImage.localFile.fixed} alt="" />
-        )}
-      </Link>
-    ))}
-  </>
-);
+}) => <ProjectList projects={projects} />;
 
 export default withLayout(Frontpage);
 
@@ -31,19 +19,7 @@ export const query = graphql`
     wp {
       projects {
         nodes {
-          slug
-          title
-
-          featuredImage {
-            localFile {
-              childImageSharp {
-                fixed(width: 500) {
-                  src
-                  srcSet
-                }
-              }
-            }
-          }
+          ...projectListItem
         }
       }
     }
