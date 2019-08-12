@@ -2,29 +2,41 @@ import css from 'styled-jsx/css';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
+import { colors } from '../../../tokens';
+
 export default css`
   header {
     align-items: center;
+    background-color: white;
     display: flex;
-    flex-direction: column;
-    margin-bottom: 5rem;
+    flex-direction: row;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  header.is-open {
+    background-color: ${colors.grey.dark};
+    color: white;
   }
 `;
 
-export const logoStyle = css.resolve`
+export const logoLink = css.resolve`
+  a {
+    align-self: center;
+    font-size: 0;
+    line-height: 1;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+  }
+`;
+
+export const logo = css.resolve`
   svg {
-    height: auto;
-    max-width: 10rem;
-    margin-top: 1rem;
-    width: 80%;
+    fill: currentColor;
+    height: 2rem;
+    width: 15rem;
     z-index: 5;
-  }
-`;
-
-export const triangleStyle = css.resolve`
-  svg {
-    height: 6rem;
-    position: absolute;
-    width: auto;
   }
 `;

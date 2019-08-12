@@ -14,6 +14,16 @@ module.exports = {
     },
 
     {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'wp',
+        fieldName: 'wp',
+        url: 'https://admin.polylux.network/graphql',
+        refetchInterval: 10
+      }
+    },
+
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'pages',
@@ -21,6 +31,8 @@ module.exports = {
       }
     },
 
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     'gatsby-transformer-remark',
     'gatsby-plugin-styled-jsx',
     'gatsby-plugin-react-helmet'

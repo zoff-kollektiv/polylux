@@ -1,16 +1,20 @@
+import classnames from 'classnames';
+import Link from 'gatsby-link';
 import React from 'react';
 
 import Logo from '../../../../static/icons/logo.svg';
-import Triangle from '../../../../static/icons/triangle-1.svg';
-import style, { logoStyle, triangleStyle } from './style';
+import style, { logo as logoStyle, logoLink as logoLinkStyle } from './style';
 
-export default () => (
-  <header>
+export default ({ menuOpen = false, children }) => (
+  <header className={classnames({ 'is-open': menuOpen })}>
     <style jsx>{style}</style>
     {logoStyle.styles}
-    {triangleStyle.styles}
+    {logoLinkStyle.styles}
 
-    <Triangle className={triangleStyle.className} />
-    <Logo className={logoStyle.className} />
+    {children}
+
+    <Link to="/" className={logoLinkStyle.className}>
+      <Logo className={logoStyle.className} />
+    </Link>
   </header>
 );

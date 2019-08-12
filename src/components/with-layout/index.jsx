@@ -1,14 +1,60 @@
-import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import React, { useState } from 'react';
 
+import Footer from './footer';
 import Header from './header';
+import Menu from './menu';
 import style from './style';
 
-export default Component => props => (
-  <>
-    <style jsx>{style}</style>
+export default Component => props => {
+  const {
+    wp: {
+      menus: { nodes: menus }
+    }
+  } = useStaticQuery(graphql`
+    {
+      wp {
+        menus {
+          nodes {
+            menuItems {
+              nodes {
+                label
+                url
+              }
+            }
+            name
+          }
+        }
+      }
+    }
+  `);
 
-    <Header />
+  const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
 
-    <Component {...props} />
-  </>
-);
+  const headerMenu = menus && menus.find(({ name }) => name === 'Header');
+  const footerMenu = menus && menus.find(({ name }) => name === 'Footer');
+
+  return (
+    <>
+      <style jsx>{style}</style>
+
+      <Header menuOpen={headerMenuOpen}>
+        {headerMenu && (
+          <Menu
+            items={headerMenu.menuItems.nodes}
+            open={headerMenuOpen}
+            onToggle={() => setHeaderMenuOpen(!headerMenuOpen)}
+          />
+        )}
+      </Header>
+
+      <main>
+        <Component {...props} />
+      </main>
+
+      <Footer>
+        {footerMenu && <Menu items={footerMenu.menuItems.nodes} />}
+      </Footer>
+    </>
+  );
+};
