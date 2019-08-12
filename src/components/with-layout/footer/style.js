@@ -29,6 +29,11 @@ export default css`
     margin-top: 1rem;
   }
 
+  .email:hover,
+  .email:focus {
+    color: ${colors.red};
+  }
+
   .social-media-container {
     display: flex;
     flex-direction: row;

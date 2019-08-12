@@ -4,7 +4,7 @@ import css from 'styled-jsx/css';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
-import { fonts } from '../../../../tokens';
+import { colors, fonts } from '../../../../tokens';
 
 export const link = css.resolve`
   a {
@@ -18,5 +18,11 @@ export const link = css.resolve`
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
+  }
+
+  a:hover,
+  a:focus {
+    background-color: ${colors.red};
+    color: white;
   }
 `;

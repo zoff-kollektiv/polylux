@@ -27,6 +27,12 @@ export const toggle = css`
     color: inherit;
     text-transform: uppercase;
   }
+
+  button:hover,
+  button:focus {
+    color: ${colors.red};
+    cursor: pointer;
+  }
 `;
 
 export const barsIcon = css.resolve`

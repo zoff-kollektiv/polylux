@@ -30,6 +30,11 @@ export const logoLink = css.resolve`
     margin-right: auto;
     vertical-align: middle;
   }
+
+  a:hover,
+  a:focus {
+    color: ${colors.red};
+  }
 `;
 
 export const logo = css.resolve`
