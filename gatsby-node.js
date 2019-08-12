@@ -13,7 +13,6 @@ exports.createPages = ({ actions, graphql }) => {
 };
 
 // https://dev.to/nevernull/gatsby-with-wpgraphql-acf-and-gatbsy-image-72m
-
 exports.createResolvers = ({
   actions,
   cache,
@@ -27,12 +26,8 @@ exports.createResolvers = ({
   createResolvers({
     wp_MediaItem: {
       localFile: {
-        type: `File`,
+        type: 'File',
         resolve(source) {
-          if (!source || !source.sourceUrl) {
-            return Promise.resolve();
-          }
-
           return createRemoteFileNode({
             url: source.sourceUrl,
             store,

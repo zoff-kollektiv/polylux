@@ -2,11 +2,14 @@ import { Helmet } from 'react-helmet';
 import React from 'react';
 import { graphql } from 'gatsby';
 
+import Button from '../../components/button';
 import Constraint from '../../components/constraint';
 import Facts from '../../components/facts';
 import Heading from '../../components/blocks/heading';
 import Location from './location';
 import Paragraph from '../../components/blocks/paragraph';
+import Picture from '../../components/picture';
+import style, { donate as donateButtonStyle } from './style';
 import Title from '../../components/title';
 import withLayout from '../../components/with-layout';
 
@@ -15,6 +18,20 @@ export const query = graphql`
     wp {
       project(id: $id) {
         title
+
+        featuredImage {
+          sourceUrl
+
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1000, grayscale: true) {
+                src
+                srcSet
+                srcSetWebp
+              }
+            }
+          }
+        }
 
         projectMetadata {
           donations {
@@ -52,6 +69,7 @@ const Project = ({
     wp: {
       project: {
         title,
+        featuredImage,
         projectMetadata: { donations, metadata },
         blocks = []
       }
@@ -62,14 +80,28 @@ const Project = ({
     <Helmet title={title} />
 
     <Constraint>
-      <Title>{title}</Title>
+      <style jsx>{style}</style>
+      {donateButtonStyle.styles}
 
-      {donations.donationUrl && (
-        <a href={donations.donationUrl}>Unterstützen</a>
-      )}
+      <Title>{title}</Title>
 
       {(metadata.city || metadata.federalState) && (
         <Location city={metadata.city} state={metadata.federalState} />
+      )}
+
+      {(featuredImage || donations.donationUrl) && (
+        <header className="image-donate-combination">
+          {featuredImage && <Picture image={featuredImage.localFile} />}
+
+          {donations.donationUrl && (
+            <Button
+              href={donations.donationUrl}
+              className={featuredImage && donateButtonStyle.className}
+            >
+              Unterstützen
+            </Button>
+          )}
+        </header>
       )}
     </Constraint>
 
