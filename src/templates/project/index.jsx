@@ -83,7 +83,9 @@ const Project = ({
       <style jsx>{style}</style>
       {donateButtonStyle.styles}
 
-      <Title>{title}</Title>
+      <Title>
+        <span dangerouslySetInnerHTML={{ __html: title }} />
+      </Title>
 
       {(metadata.city || metadata.federalState) && (
         <Location city={metadata.city} state={metadata.federalState} />
