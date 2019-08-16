@@ -10,7 +10,7 @@ const Project = ({ title, target, image }) => (
     <style jsx>{style}</style>
     {containerStyle.styles}
 
-    <h2>{title}</h2>
+    <h2 dangerouslySetInnerHTML={{ __html: title }} />
 
     {image && <Picture type="fixed" image={image.localFile} />}
   </Link>

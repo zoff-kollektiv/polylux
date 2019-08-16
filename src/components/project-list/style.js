@@ -14,4 +14,8 @@ export default css`
     padding: 1.5rem;
     width: 100%;
   }
+
+  li {
+    margin-right: 1.5rem;
+  }
 `;
