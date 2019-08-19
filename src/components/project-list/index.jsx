@@ -1,3 +1,4 @@
+import { graphql } from 'gatsby';
 import React from 'react';
 
 import Project from './project';
@@ -16,3 +17,12 @@ const ProjectList = ({ projects }) => (
 );
 
 export default ProjectList;
+
+export const fragment = graphql`
+  fragment wpBlockProjects on wp_AcfProjectsBlock {
+    acf {
+      title
+      number_of_projects
+    }
+  }
+`;

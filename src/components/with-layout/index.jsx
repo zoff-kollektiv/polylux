@@ -8,15 +8,12 @@ import style from './style';
 export default Component => props => {
   const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
   const {
+    data: { wp },
     pageContext: { menus }
   } = props;
 
   const headerMenu = menus && menus.find(({ name }) => name === 'Header');
   const footerMenu = menus && menus.find(({ name }) => name === 'Footer');
-
-  const {
-    data: { wp }
-  } = props;
 
   return (
     <>

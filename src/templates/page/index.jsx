@@ -37,7 +37,7 @@ export const query = graphql`
 const Page = ({
   data: {
     wp: {
-      page: { title, blocks }
+      page: { title, blocks = [] }
     }
   }
 }) => (
