@@ -19,6 +19,10 @@ export const query = graphql`
       project(id: $id) {
         title
 
+        metadata {
+          themeColor
+        }
+
         featuredImage {
           sourceUrl
 

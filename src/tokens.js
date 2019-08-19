@@ -5,7 +5,9 @@ export const colors = {
     medium: '#6C6B6B',
     dark: '#525252'
   },
-  red: '#FF0000'
+  red: '#FF0000',
+  cyan: '#00FFFF',
+  magenta: '#FF00FF'
 };
 
 export const fonts = {
