@@ -6,10 +6,43 @@ const { createProjects } = require('./gatsby-creators/project');
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  return Promise.all([
-    createPages(graphql, createPage, []),
-    createProjects(graphql, createPage, [])
-  ]);
+  return graphql(`
+    {
+      wp {
+        menus {
+          nodes {
+            menuItems {
+              nodes {
+                label
+                url
+              }
+            }
+            name
+          }
+        }
+      }
+    }
+  `).then(({ data }) => {
+    let {
+      wp: {
+        menus: { nodes: menus }
+      }
+    } = data;
+
+    menus = menus.map(({ menuItems: { nodes: items }, ...menuProps }) => ({
+      ...menuProps,
+      menuItems: items.map(({ url, ...itemProps }) => ({
+        ...itemProps,
+        // make the URL relative
+        url: new URL(url).pathname
+      }))
+    }));
+
+    return Promise.all([
+      createPages(graphql, createPage, menus),
+      createProjects(graphql, createPage, menus)
+    ]);
+  });
 };
 
 // https://dev.to/nevernull/gatsby-with-wpgraphql-acf-and-gatbsy-image-72m

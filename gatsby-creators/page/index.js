@@ -23,7 +23,11 @@ const createGatsbyPages = (data, createPage, menus) => {
   } = data;
 
   pages.forEach(({ slug, id }) => {
-    const pagePath = `/${slug}/`;
+    let pagePath = `/${slug}/`;
+
+    if (slug === 'start') {
+      pagePath = '/';
+    }
 
     // eslint-disable-next-line no-console
     console.log('Create page:', pagePath);
