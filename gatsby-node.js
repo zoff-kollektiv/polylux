@@ -11,13 +11,13 @@ exports.createPages = ({ actions, graphql }) => {
       wp {
         menus {
           nodes {
+            name
             menuItems {
               nodes {
                 label
                 url
               }
             }
-            name
           }
         }
       }

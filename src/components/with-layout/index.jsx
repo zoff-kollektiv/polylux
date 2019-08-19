@@ -21,7 +21,7 @@ export default Component => props => {
       <Header menuOpen={headerMenuOpen}>
         {headerMenu && (
           <Menu
-            items={headerMenu.menuItems.nodes}
+            items={headerMenu.menuItems}
             open={headerMenuOpen}
             onToggle={() => setHeaderMenuOpen(!headerMenuOpen)}
           />

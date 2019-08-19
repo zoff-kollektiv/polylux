@@ -22,7 +22,7 @@ module.exports = {
         typeName: 'wp',
         fieldName: 'wp',
         url: 'https://admin.polylux.network/graphql',
-        refetchInterval: 10
+        refetchInterval: 100
       }
     },
 
