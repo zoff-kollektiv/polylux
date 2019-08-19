@@ -14,6 +14,10 @@ export const query = graphql`
       page(id: $id) {
         title
 
+        metadata {
+          themeColor
+        }
+
         blocks {
           __typename
 

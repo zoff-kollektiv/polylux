@@ -14,11 +14,21 @@ export default Component => props => {
   const headerMenu = menus && menus.find(({ name }) => name === 'Header');
   const footerMenu = menus && menus.find(({ name }) => name === 'Footer');
 
+  const {
+    data: { wp }
+  } = props;
+
   return (
     <>
       <style jsx>{style}</style>
 
-      <Header menuOpen={headerMenuOpen}>
+      <Header
+        menuOpen={headerMenuOpen}
+        theme={
+          (wp.project && wp.project.metadata.themeColor) ||
+          (wp.page && wp.page.metadata.themeColor)
+        }
+      >
         {headerMenu && (
           <Menu
             items={headerMenu.menuItems}

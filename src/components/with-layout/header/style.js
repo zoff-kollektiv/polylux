@@ -19,6 +19,18 @@ export default css`
     background-color: ${colors.grey.dark};
     color: white;
   }
+
+  .theme-red {
+    background-color: ${colors.red};
+  }
+
+  .theme-cyan {
+    background-color: ${colors.cyan};
+  }
+
+  .theme-magenta {
+    background-color: ${colors.magenta};
+  }
 `;
 
 export const logoLink = css.resolve`

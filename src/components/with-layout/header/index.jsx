@@ -5,8 +5,14 @@ import React from 'react';
 import Logo from '../../../../static/icons/logo.svg';
 import style, { logo as logoStyle, logoLink as logoLinkStyle } from './style';
 
-export default ({ menuOpen = false, children }) => (
-  <header className={classnames({ 'is-open': menuOpen })}>
+export default ({ menuOpen = false, theme, children, ...rest }) => (
+  <header
+    className={classnames(
+      { 'is-open': menuOpen },
+      { [`theme-${theme}`]: theme }
+    )}
+    {...rest}
+  >
     <style jsx>{style}</style>
     {logoStyle.styles}
     {logoLinkStyle.styles}
